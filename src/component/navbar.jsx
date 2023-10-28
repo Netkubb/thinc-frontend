@@ -48,25 +48,14 @@ function Navbar() {
     <AppBar position="static">
       <Container maxWidth="xl" sx={{ backgroundColor: "#DF8EC4" }}>
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
-
+          <Box sx={{ backgroundColor: 'white', height: '50px', mr: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', pl: 1, borderRadius: '20px' }}>
+            <Box
+              component="img"
+              sx={{ display: { xs: "none", md: "flex" }, mr: 1, height: '100%' }}
+              alt="The house from the offer."
+              src="/logo.png"
+            />
+          </Box>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"

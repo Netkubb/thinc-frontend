@@ -1,45 +1,11 @@
-import React, { useState } from "react";
-import loginAPI from "../../api/authAPI/loginAPI";
+import React from "react";
+import { Box } from "@mui/material";
+import LoginForm from "./loginform";
 
-function Login() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
-
-  const handleLogin = async () => {
-    try {
-      const result = await loginAPI(username, password);
-
-      if (result.success) {
-        // Redirect to the authenticated page or show a success message
-        setMessage("Login successful");
-      } else {
-        setMessage(result.message);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
+export default function Login() {
   return (
-    <div>
-      <h2>Login</h2>
-      <input
-        type="text"
-        placeholder="Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={handleLogin}>Login</button>
-      {message && <div>{message}</div>}
-    </div>
+    <Box sx={{ display: "flex", justifyContent: "center", paddingTop: "10" }}>
+      <LoginForm></LoginForm>
+    </Box>
   );
 }
-
-export default Login;

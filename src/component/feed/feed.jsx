@@ -9,6 +9,7 @@ function Feed() {
     <Box display={'flex'} justifyContent={'center'}>
       <ButtonInFeed />
       <VideoCard></VideoCard>
+
     </Box>
   );
 }

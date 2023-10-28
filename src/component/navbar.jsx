@@ -12,6 +12,10 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import { TextField } from "@mui/material";
+import LightbulbIcon from '@mui/icons-material/Lightbulb';
 
 const pages = ["Home", "Feed"];
 const settings = ["Login", "Logout"];
@@ -19,6 +23,11 @@ const settings = ["Login", "Logout"];
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [darkMode, setDarkMode] = React.useState(true);
+
+  const handleDarkMode = () => {
+    setDarkMode(!darkMode);
+  }
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -93,23 +102,6 @@ function Navbar() {
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
@@ -121,7 +113,25 @@ function Navbar() {
               </Button>
             ))}
           </Box>
-
+          <Box sx={{ mr: 6, height: '30px', display: 'flex', alignItems: 'center' }} onClick={handleDarkMode}>
+            {
+              darkMode ? <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Typography sx={{ fontSize: '14px' }}>MODE: </Typography><WbSunnyIcon sx={{ color: "yellow" }} /></Box> : <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Typography sx={{ fontSize: '14px' }}>MODE: </Typography><DarkModeIcon sx={{ color: 'black' }} /></Box>
+            }
+          </Box>
+          <Box sx={{ mr: 4, height: '30px', display: 'flex', alignItems: 'center' }}>
+            <LightbulbIcon />
+            <TextField
+              id="standard-read-only-input"
+              label="Bulbs"
+              value="100000000"
+              InputProps={{
+                readOnly: true,
+                style: { color: 'black' }
+              }}
+              size='small'
+              sx={{ width: '110px' }}
+            />
+          </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -161,7 +171,7 @@ function Navbar() {
           </Box>
         </Toolbar>
       </Container>
-    </AppBar>
+    </AppBar >
   );
 }
 export default Navbar;

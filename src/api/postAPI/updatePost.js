@@ -1,4 +1,4 @@
-import { backendIPAddress } from "../../../utils/constants";
+import { backendIPAddress } from "../../utils/constants";
 
 export default async function updatePost(pid, SendUserCaption, SendUserLike) {
   const response = await fetch(`http://${backendIPAddress}/feed/`, {

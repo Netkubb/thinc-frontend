@@ -1,5 +1,5 @@
 import Cookies from "js-cookie";
-import { backendIPAddress } from "../../../utils/constants";
+import { backendIPAddress } from "../../utils/constants";
 
 export default async function loginAPI(SendUsername, SendPassword) {
   const response = await fetch(`http://${backendIPAddress}/auth/login`, {

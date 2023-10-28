@@ -1,4 +1,4 @@
-import { backendIPAddress } from "../../../utils/constants";
+import { backendIPAddress } from "../../utils/constants";
 
 export default async function deletePost(pid) {
   const response = await fetch(`http://${backendIPAddress}/feed/`, {

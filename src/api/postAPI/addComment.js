@@ -1,4 +1,4 @@
-import { backendIPAddress } from "../../../utils/constants";
+import { backendIPAddress } from "../../utils/constants";
 
 export default async function addComment(pid, SendUsername, SendContent) {
   const response = await fetch(`http://${backendIPAddress}/addComment`, {

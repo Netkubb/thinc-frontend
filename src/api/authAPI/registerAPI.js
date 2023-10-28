@@ -1,4 +1,4 @@
-import { backendIPAddress } from "../../../utils/constants";
+import { backendIPAddress } from "../../utils/constants";
 
 export default async function registerAPI(SendUsername, SendPassword) {
   const response = await fetch(`http://${backendIPAddress}/auth/register`, {

@@ -15,15 +15,17 @@ export default async function loginAPI(SendUsername, SendPassword) {
 
   if (!response.ok) {
     if (response.status === 404) {
+      console.log("wrong username or password");
       throw Error("wrong username or password");
     }
+    console.log("fail to fetch login");
     throw Error("fail to fetch login");
   }
 
   const data = await response.json();
   const accessToken = data.accessToken;
 
-  Cookies.set("jwt", accessToken, { expires: "3" });
+  Cookies.set("jwt", accessToken, { expires: 3 });
 
   return { success: true, message: "Login successful" };
 }

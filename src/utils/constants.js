@@ -1,1 +1,1 @@
-export const backendIPAddress = "locahost5050";
+export const backendIPAddress = "127.0.0.1:5050";

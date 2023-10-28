@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import loginAPI from "../../api/authAPI/loginAPI";
+
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -16,7 +17,7 @@ function Login() {
         setMessage(result.message);
       }
     } catch (error) {
-      setMessage("An error occurred during login");
+      console.error(error);
     }
   };
 

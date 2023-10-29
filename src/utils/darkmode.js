@@ -1,8 +1,8 @@
-export function setDarkMode(darkmode) {
+export function setGlobalDarkMode(darkmode) {
     localStorage.setItem("darkmode", darkmode);
 }
 
 export function getDarkMode() {
-    return localStorage.getItem("darkmode");
+    return localStorage.getItem("darkmode") || false;
 }
 

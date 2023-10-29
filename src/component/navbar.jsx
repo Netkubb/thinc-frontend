@@ -17,6 +17,7 @@ import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { TextField } from "@mui/material";
 import LightbulbIcon from "@mui/icons-material/Lightbulb";
 import Cookies from "js-cookie";
+import { setGlobalDarkMode } from "../utils/darkmode";
 
 
 function Navbar() {
@@ -42,6 +43,7 @@ function Navbar() {
 
   const handleDarkMode = () => {
     setDarkMode(!darkMode);
+    setGlobalDarkMode(!darkMode);
   };
 
   const handleOpenNavMenu = (event) => {

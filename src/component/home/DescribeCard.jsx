@@ -9,17 +9,17 @@ export default function DescribeCard() {
         <Card sx={{ minWidth: 275, width: '98vw', height: '70vh', marginX: '1vw', marginTop: '2vh', display: 'flex', alignItems: 'center', justifyContent: 'space-around', backgroundColor: "#1C1C1C", borderRadius: '45px', color: "white" }}>
             <CardContent>
 
-                <Typography sx={{ fontSize: 40 }} color="whitesmoke" gutterBottom>
+                <Typography sx={{ fontSize: 40 ,fontFamily: "Georgia"}} color="whitesmoke" gutterBottom>
                     Name : xxx yyy
                 </Typography>
-                <Typography sx={{ fontSize: 40 }} color="whitesmoke" gutterBottom>
+                <Typography sx={{ fontSize: 40 ,fontFamily: "Georgia"}} color="whitesmoke" gutterBottom>
                     Position : xxx
                 </Typography>
                 <Box style={{ position: 'absolute', bottom: 250, left: 40, textAlign: 'left' }}>
-                    <Typography sx={{ fontSize: 30 }} color="whitesmoke" gutterBottom>
+                    <Typography sx={{ fontSize: 30,fontFamily: "Georgia" }} color="whitesmoke" gutterBottom>
                         About BokBok
                     </Typography>
-                    <Typography sx={{ fontSize: 20 }} color="whitesmoke" gutterBottom>
+                    <Typography sx={{ fontSize: 20,fontFamily: "Georgia" }} color="whitesmoke" gutterBottom>
                         xxxxxxxx xxxxxxxx
                     </Typography>
                 </Box>

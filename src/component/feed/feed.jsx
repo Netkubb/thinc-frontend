@@ -10,7 +10,7 @@ function Feed() {
   const [index, setIndex] = React.useState(0);
   return (
     <Box display={"flex"} justifyContent={"center"}>
-      <ButtonInFeed idx={index} controlidx={setIndex} sizearr={arrSize} />
+      <ButtonInFeed idx={index} controlidx={(x) => setIndex(x)} sizearr={arrSize} />
       <VideoCard idx={index} arr={arr} />
     </Box>
   );

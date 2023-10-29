@@ -16,7 +16,7 @@ export default function UploadDetail() {
   const uploadHandler = async () => {
     try {
       const result = await uploadVideo(selectedFile);
-      const res = await createPost(result.url, caption)
+      const res = await createPost(result.url, caption);
       console.log(res);
       document.location.href = "/feed";
     } catch (err) {

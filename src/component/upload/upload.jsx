@@ -5,7 +5,7 @@ import { Box } from "@mui/material";
 function Upload() {
   // TODO add upload page
   return (
-    <Box display={'flex'} alignItems={'center'} justifyContent={'center'} >
+    <Box display={"flex"} alignItems={"center"} justifyContent={"center"}>
       <UploadDetail />
     </Box>
   );

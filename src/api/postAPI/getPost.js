@@ -1,14 +1,12 @@
+import Cookies from "js-cookie";
 import { backendIPAddress } from "../../utils/constants";
 
 export default async function getPost(pid) {
-  const response = await fetch(`http://${backendIPAddress}/feed/post`, {
+  const response = await fetch(`http://${backendIPAddress}/feed/post?id=${pid}`, {
     method: "GET",
-    credentials: "include",
     headers: {
       "Content-Type": "application/json",
-    },
-    body: {
-      id: pid,
+      "Authorization": `Bearer ${Cookies.get('jwt')}` || "",
     },
   });
 

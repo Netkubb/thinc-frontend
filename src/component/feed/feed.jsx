@@ -1,21 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ButtonInFeed from "./ButtonInFeed";
 import { Box } from "@mui/material";
 import VideoCard from "./VideoCard";
-
-const arr = ["0", "1", "2", "3"];
-const arrSize = arr.length;
+import getPosts from "../../api/postAPI/getPosts";
 
 function Feed() {
   const [index, setIndex] = React.useState(0);
+  const [posts, setPosts] = React.useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await getPosts();
+      setPosts(result);
+      console.log(result);
+    };
+    fetchData();
+  }, []);
+
   return (
     <Box display={"flex"} justifyContent={"center"}>
       <ButtonInFeed
         idx={index}
         controlidx={(x) => setIndex(x)}
-        sizearr={arrSize}
+        sizearr={posts.length}
       />
-      <VideoCard idx={index} arr={arr} />
+      <VideoCard idx={index} arr={posts} />
     </Box>
   );
 }

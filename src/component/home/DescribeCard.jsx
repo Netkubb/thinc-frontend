@@ -7,12 +7,12 @@ import { Box } from '@mui/material';
 export default function DescribeCard() {
     return (
         <Card sx={{ minWidth: 275, width: '98vw', height: '70vh', marginX: '1vw', marginTop: '2vh', display: 'flex', alignItems: 'center', justifyContent: 'space-around', backgroundColor: "#1C1C1C", borderRadius: '45px', color: "white" }}>
-            <CardContent>
+            <CardContent sx={{ width: '40vw', height: '28vh', marginX: '1vw', marginTop: '2vh', display: 'flex', alignItems: 'center', justifyContent: 'space-around', backgroundColor: "#ffb3bf", borderRadius: '45px', color: "white" }}>
 
-                <Typography sx={{ fontSize: 40 ,fontFamily: "Georgia"}} color="whitesmoke" gutterBottom>
+                <Typography sx={{ fontSize: 40 ,fontFamily: "Georgia"}} color="#FFFAFA" gutterBottom>
                     Name : xxx yyy
                 </Typography>
-                <Typography sx={{ fontSize: 40 ,fontFamily: "Georgia"}} color="whitesmoke" gutterBottom>
+                <Typography sx={{ fontSize: 40 ,fontFamily: "Georgia"}} color="#FFFAFA" gutterBottom>
                     Position : xxx
                 </Typography>
                 <Box style={{ position: 'absolute', bottom: 250, left: 40, textAlign: 'left' }}>

@@ -75,7 +75,7 @@ function Navbar() {
 
   return (
     <AppBar position="static">
-      <Container maxWidth="xxl" sx={{ backgroundColor: "#DF8EC4" }}>
+      <Container maxWidth="xxl" sx={{ backgroundColor: getDarkMode() ? "#DF8EC4" : 'grey' }}>
         <Toolbar disableGutters>
           <Box
             sx={{

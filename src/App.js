@@ -6,6 +6,7 @@ import Feed from "./component/feed/feed";
 import Upload from "./component/upload/upload";
 import Home from "./component/home/home";
 import Login from "./component/login/login";
+import Register from "./component/register/register";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/feed" element={<Feed />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/upload" element={<Upload />} />
           </Route>
         </Routes>

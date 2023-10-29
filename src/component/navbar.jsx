@@ -12,22 +12,35 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import WbSunnyIcon from '@mui/icons-material/WbSunny';
-import DarkModeIcon from '@mui/icons-material/DarkMode';
+import WbSunnyIcon from "@mui/icons-material/WbSunny";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { TextField } from "@mui/material";
-import LightbulbIcon from '@mui/icons-material/Lightbulb';
+import LightbulbIcon from "@mui/icons-material/Lightbulb";
+import Cookies from "js-cookie";
 
 const pages = ["Home", "Feed"];
-const settings = ["Login", "Logout"];
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [darkMode, setDarkMode] = React.useState(true);
+  const [settings, setSettings] = React.useState([
+    "Login",
+    "Register",
+    "Logout",
+  ]);
+
+  React.useEffect(() => {
+    if (Cookies.get("jwt")) {
+      setSettings(["Logout"]);
+    } else {
+      setSettings(["Login", "Register"]);
+    }
+  });
 
   const handleDarkMode = () => {
     setDarkMode(!darkMode);
-  }
+  };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -47,7 +60,7 @@ function Navbar() {
 
   const settingHandler = (event) => {
     if (event.currentTarget.textContent === "Logout") {
-      // TODO logout
+      Cookies.remove("jwt");
       return;
     }
     window.location.href = "/" + event.currentTarget.textContent.toLowerCase();
@@ -57,10 +70,25 @@ function Navbar() {
     <AppBar position="static">
       <Container maxWidth="xxl" sx={{ backgroundColor: "#DF8EC4" }}>
         <Toolbar disableGutters>
-          <Box sx={{ backgroundColor: 'white', height: '50px', mr: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', pl: 1, borderRadius: '20px' }}>
+          <Box
+            sx={{
+              backgroundColor: "white",
+              height: "50px",
+              mr: 1,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              pl: 1,
+              borderRadius: "20px",
+            }}
+          >
             <Box
               component="img"
-              sx={{ display: { xs: "none", md: "flex" }, mr: 1, height: '100%' }}
+              sx={{
+                display: { xs: "none", md: "flex" },
+                mr: 1,
+                height: "100%",
+              }}
               alt="The house from the offer."
               src="/logo.png"
             />
@@ -113,12 +141,47 @@ function Navbar() {
               </Button>
             ))}
           </Box>
-          <Box sx={{ mr: 6, height: '30px', display: 'flex', alignItems: 'center' }} onClick={handleDarkMode}>
-            {
-              darkMode ? <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Typography sx={{ fontSize: '14px' }}>MODE: </Typography><WbSunnyIcon sx={{ color: "yellow" }} /></Box> : <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Typography sx={{ fontSize: '14px' }}>MODE: </Typography><DarkModeIcon sx={{ color: 'black' }} /></Box>
-            }
+          <Box
+            sx={{
+              mr: 6,
+              height: "30px",
+              display: "flex",
+              alignItems: "center",
+            }}
+            onClick={handleDarkMode}
+          >
+            {darkMode ? (
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Typography sx={{ fontSize: "14px" }}>MODE: </Typography>
+                <WbSunnyIcon sx={{ color: "yellow" }} />
+              </Box>
+            ) : (
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Typography sx={{ fontSize: "14px" }}>MODE: </Typography>
+                <DarkModeIcon sx={{ color: "black" }} />
+              </Box>
+            )}
           </Box>
-          <Box sx={{ mr: 4, height: '30px', display: 'flex', alignItems: 'center' }}>
+          <Box
+            sx={{
+              mr: 4,
+              height: "30px",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
             <LightbulbIcon />
             <TextField
               id="standard-read-only-input"
@@ -126,10 +189,10 @@ function Navbar() {
               value="100000000"
               InputProps={{
                 readOnly: true,
-                style: { color: 'black' }
+                style: { color: "black" },
               }}
-              size='small'
-              sx={{ width: '110px' }}
+              size="small"
+              sx={{ width: "110px" }}
             />
           </Box>
           <Box sx={{ flexGrow: 0 }}>
@@ -171,7 +234,7 @@ function Navbar() {
           </Box>
         </Toolbar>
       </Container>
-    </AppBar >
+    </AppBar>
   );
 }
 export default Navbar;

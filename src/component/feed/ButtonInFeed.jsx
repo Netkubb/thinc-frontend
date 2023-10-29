@@ -64,10 +64,10 @@ export default function ButtonInFeed() {
                 </DialogActions>
             </Dialog>
             <Dialog open={comfirm} onClose={handleCloseConfirm}>
-                <DialogTitle>Enter Number of Bulbs</DialogTitle>
+                <DialogTitle>Comfirm Donation</DialogTitle>
                 <DialogContent>
                     <Typography>
-                        Are you to donate {"xxx"}
+                        Are you sure to donate {"xxx"} bulbs ?
                     </Typography>
                 </DialogContent>
                 <DialogActions>

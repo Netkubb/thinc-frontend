@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Box, Card, CardContent, CardMedia, Typography, Divider } from '@mui/material';
+import { Box, Card, CardContent, CardMedia, Typography, Divider, TextField } from '@mui/material';
 import CommentIcon from '@mui/icons-material/Comment';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault';
+import SendIcon from '@mui/icons-material/Send';
 
 export default function VideoCard() {
     const [showComment, setShowComment] = React.useState(false);
@@ -45,17 +46,121 @@ export default function VideoCard() {
             </CardContent>
             {showComment ?
                 <Box>
-                    <Box sx={{ backgroundColor: "white", height: '60vh', width: '25vw', position: "absolute", left: "60px", bottom: '60px', borderRadius: '10px', p: 2 }}>
+                    <Box sx={{ backgroundColor: "white", height: '60vh', width: '25vw', position: "absolute", left: "60px", bottom: '60px', borderRadius: '10px', p: 2, overflow: 'hidden', overflowY: 'scroll' }}>
                         <Box sx={{ width: "100%", display: 'flex', justifyContent: 'end' }}>
                             <DisabledByDefaultIcon sx={{ color: 'black' }} onClick={handleCommentClick} />
                         </Box>
-                        <Typography variant='subtitle1' component="div" color={'black'} align='left' fontWeight={'bold'}>
-                            {"Name"}
-                        </Typography>
-                        <Typography variant="caption" component="div" color={'black'} align='left' sx={{ wordBreak: 'break-word' }}>
-                            {'Caption'}
-                        </Typography>
-                        <Divider sx={{ borderBottomWidth: '1px', my: 1 }} />
+                        <Box >
+                            <Typography variant='subtitle1' component="div" color={'black'} align='left' fontWeight={'bold'}>
+                                {"Name"}
+                            </Typography>
+                            <Typography variant="caption" component="div" color={'black'} align='left' sx={{ wordBreak: 'break-word' }}>
+                                {'Caption'}
+                            </Typography>
+                            <Divider sx={{ borderBottomWidth: '1px', my: 1 }} />
+                            <Typography variant='subtitle1' component="div" color={'black'} align='left' fontWeight={'bold'}>
+                                {"Name"}
+                            </Typography>
+                            <Typography variant="caption" component="div" color={'black'} align='left' sx={{ wordBreak: 'break-word' }}>
+                                {'Caption'}
+                            </Typography>
+                            <Divider sx={{ borderBottomWidth: '1px', my: 1 }} />
+                            <Typography variant='subtitle1' component="div" color={'black'} align='left' fontWeight={'bold'}>
+                                {"Name"}
+                            </Typography>
+                            <Typography variant="caption" component="div" color={'black'} align='left' sx={{ wordBreak: 'break-word' }}>
+                                {'Caption'}
+                            </Typography>
+                            <Divider sx={{ borderBottomWidth: '1px', my: 1 }} />
+                            <Typography variant='subtitle1' component="div" color={'black'} align='left' fontWeight={'bold'}>
+                                {"Name"}
+                            </Typography>
+                            <Typography variant="caption" component="div" color={'black'} align='left' sx={{ wordBreak: 'break-word' }}>
+                                {'Caption'}
+                            </Typography>
+                            <Divider sx={{ borderBottomWidth: '1px', my: 1 }} />
+                            <Typography variant='subtitle1' component="div" color={'black'} align='left' fontWeight={'bold'}>
+                                {"Name"}
+                            </Typography>
+                            <Typography variant="caption" component="div" color={'black'} align='left' sx={{ wordBreak: 'break-word' }}>
+                                {'Caption'}
+                            </Typography>
+                            <Divider sx={{ borderBottomWidth: '1px', my: 1 }} />
+                            <Typography variant='subtitle1' component="div" color={'black'} align='left' fontWeight={'bold'}>
+                                {"Name"}
+                            </Typography>
+                            <Typography variant="caption" component="div" color={'black'} align='left' sx={{ wordBreak: 'break-word' }}>
+                                {'Caption'}
+                            </Typography>
+                            <Divider sx={{ borderBottomWidth: '1px', my: 1 }} />
+                            <Typography variant='subtitle1' component="div" color={'black'} align='left' fontWeight={'bold'}>
+                                {"Name"}
+                            </Typography>
+                            <Typography variant="caption" component="div" color={'black'} align='left' sx={{ wordBreak: 'break-word' }}>
+                                {'Caption'}
+                            </Typography>
+                            <Divider sx={{ borderBottomWidth: '1px', my: 1 }} />
+                            <Typography variant='subtitle1' component="div" color={'black'} align='left' fontWeight={'bold'}>
+                                {"Name"}
+                            </Typography>
+                            <Typography variant="caption" component="div" color={'black'} align='left' sx={{ wordBreak: 'break-word' }}>
+                                {'Caption'}
+                            </Typography>
+                            <Divider sx={{ borderBottomWidth: '1px', my: 1 }} />
+                            <Typography variant='subtitle1' component="div" color={'black'} align='left' fontWeight={'bold'}>
+                                {"Name"}
+                            </Typography>
+                            <Typography variant="caption" component="div" color={'black'} align='left' sx={{ wordBreak: 'break-word' }}>
+                                {'Caption'}
+                            </Typography>
+                            <Divider sx={{ borderBottomWidth: '1px', my: 1 }} />
+                            <Typography variant='subtitle1' component="div" color={'black'} align='left' fontWeight={'bold'}>
+                                {"Name"}
+                            </Typography>
+                            <Typography variant="caption" component="div" color={'black'} align='left' sx={{ wordBreak: 'break-word' }}>
+                                {'Caption'}
+                            </Typography>
+                            <Divider sx={{ borderBottomWidth: '1px', my: 1 }} />
+                            <Typography variant='subtitle1' component="div" color={'black'} align='left' fontWeight={'bold'}>
+                                {"Name"}
+                            </Typography>
+                            <Typography variant="caption" component="div" color={'black'} align='left' sx={{ wordBreak: 'break-word' }}>
+                                {'Caption'}
+                            </Typography>
+                            <Divider sx={{ borderBottomWidth: '1px', my: 1 }} />
+                            <Typography variant='subtitle1' component="div" color={'black'} align='left' fontWeight={'bold'}>
+                                {"Name"}
+                            </Typography>
+                            <Typography variant="caption" component="div" color={'black'} align='left' sx={{ wordBreak: 'break-word' }}>
+                                {'Caption'}
+                            </Typography>
+                            <Divider sx={{ borderBottomWidth: '1px', my: 1 }} />
+                            <Typography variant='subtitle1' component="div" color={'black'} align='left' fontWeight={'bold'}>
+                                {"Name"}
+                            </Typography>
+                            <Typography variant="caption" component="div" color={'black'} align='left' sx={{ wordBreak: 'break-word' }}>
+                                {'Caption'}
+                            </Typography>
+                            <Divider sx={{ borderBottomWidth: '1px', my: 1 }} />
+                            <Typography variant='subtitle1' component="div" color={'black'} align='left' fontWeight={'bold'}>
+                                {"Name"}
+                            </Typography>
+                            <Typography variant="caption" component="div" color={'black'} align='left' sx={{ wordBreak: 'break-word' }}>
+                                {'Caption'}
+                            </Typography>
+                            <Divider sx={{ borderBottomWidth: '1px', my: 1 }} />
+                            <Typography variant='subtitle1' component="div" color={'black'} align='left' fontWeight={'bold'}>
+                                {"Name"}
+                            </Typography>
+                            <Typography variant="caption" component="div" color={'black'} align='left' sx={{ wordBreak: 'break-word' }}>
+                                {'Caption'}
+                            </Typography>
+                            <Divider sx={{ borderBottomWidth: '1px', my: 1 }} />
+                        </Box>
+                        <Box display={'flex'} justifyContent={'space-evenly'} alignItems={'center'} marginY={'10px'}>
+                            <TextField id="filled-basic" label="Add Comment" variant="filled" size='small' sx={{ width: '80%' }} />
+                            <SendIcon sx={{ color: 'black' }} />
+                        </Box>
                     </Box>
                 </Box>
                 : null}

@@ -1,5 +1,6 @@
 import Cookies from "js-cookie";
 import { backendIPAddress } from "../../utils/constants";
+const multer = require("multer");
 
 export default async function getUser() {
   const Token = Cookies.get("jwt");

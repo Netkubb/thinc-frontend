@@ -13,11 +13,16 @@ export default function LoginForm() {
   const jwtToken = Cookies.get("jwt");
 
   if (jwtToken) {
-    // The 'jwt' cookie exists, and jwtToken contains its value
-    console.log("Cookie found:", jwtToken);
+    // Parse the JWT token to get the username
+    const decodedToken = atob(jwtToken.split(".")[1]);
+    const userData = JSON.parse(decodedToken);
+    const username = userData.username;
+
+    // You have the username from the JWT token
+    console.log("Username:", username);
   } else {
     // The 'jwt' cookie does not exist
-    console.log("Cookie not found");
+    console.log("JWT cookie not found");
   }
 
   const handleLogin = async () => {
@@ -27,7 +32,7 @@ export default function LoginForm() {
       if (result.success) {
         // Redirect to the authenticated page or show a success message
         setMessage("Login successful");
-        document.location.href = "/feed";
+        //document.location.href = "/feed";
       } else {
         setMessage("Incorrect username or password");
       }

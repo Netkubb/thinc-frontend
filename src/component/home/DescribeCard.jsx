@@ -15,11 +15,6 @@ export default function DescribeCard() {
                 <Typography sx={{ fontSize: 40 }} color="whitesmoke" gutterBottom>
                     Position : xxx
                 </Typography>
-                {/* <Typography sx={{ fontSize: 30 ,textAlign: 'left'}} color="whitesmoke" gutterBottom>
-                    About BokBok
-                </Typography><Typography sx={{ fontSize: 20 ,textAlign: 'left'}} color="whitesmoke" gutterBottom>
-                    xxxxxxxx xxxxxxxx
-                </Typography> */}
                 <Box style={{ position: 'absolute', bottom: 250, left: 40, textAlign: 'left' }}>
                     <Typography sx={{ fontSize: 30 }} color="whitesmoke" gutterBottom>
                         About BokBok
@@ -30,6 +25,15 @@ export default function DescribeCard() {
                 </Box>
 
             </CardContent>
+            <Box style={{ position: 'absolute', top: 115, left: 40, textAlign: 'top' }}
+                component="img"
+                sx={{
+                    height: '10%',
+                    borderRadius: '15px'
+                }}
+                alt="The house from the offer."
+                src = "./_.jpeg"
+            />
            
             <Box
                 component="img"

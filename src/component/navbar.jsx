@@ -61,6 +61,7 @@ function Navbar() {
   const settingHandler = (event) => {
     if (event.currentTarget.textContent === "Logout") {
       Cookies.remove("jwt");
+      document.location.href = "/home";
       return;
     }
     window.location.href = "/" + event.currentTarget.textContent.toLowerCase();

@@ -27,6 +27,7 @@ export default function LoginForm() {
       if (result.success) {
         // Redirect to the authenticated page or show a success message
         setMessage("Login successful");
+        document.location.href = "/feed";
       } else {
         setMessage("Incorrect username or password");
       }

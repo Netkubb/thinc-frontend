@@ -52,7 +52,7 @@ export default function RegisterForm() {
       sx={{
         minWidth: 275,
         width: "30vw",
-        height: "75vh",
+        height: "85vh",
         display: "flex",
         marginTop: "50px",
         borderRadius: "16px",
@@ -140,6 +140,7 @@ export default function RegisterForm() {
           width: "100%",
           display: "flex",
           justifyContent: "center",
+          marginTop: "20px",
         }}
       >
         <Button

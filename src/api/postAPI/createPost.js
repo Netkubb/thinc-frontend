@@ -19,7 +19,7 @@ export default async function createPost(SendVideoURL, SendCaption) {
       videoURL: SendVideoURL,
       like: 0,
       caption: SendCaption,
-      comment: "",
+      comment: "[]",
       username: username,
     }),
   });

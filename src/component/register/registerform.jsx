@@ -121,8 +121,7 @@ export default function RegisterForm() {
           variant="standard"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          helperText="Dont share password with anyone"
-          sx={{ width: "70%" }}
+          sx={{ width: "70%", marginY: "20px" }}
         />
         <TextField
           type="password"
@@ -131,7 +130,7 @@ export default function RegisterForm() {
           variant="standard"
           value={confirmPassword}
           onChange={(e) => setConfirm(e.target.value)}
-          sx={{ width: "70%" }}
+          sx={{ width: "70%", marginY: "20px" }}
         />
       </Box>
 

@@ -2,25 +2,31 @@ import { backendIPAddress } from "../../utils/constants";
 
 export default async function uploadVideo(videoFile) {
   try {
-    // VDO file
     const formData = new FormData();
-    formData.append("video", videoFile);
+    formData.append("file", videoFile);
 
-    // fetch
-    const response = fetch(`http://${backendIPAddress}/feed/upload`, {
+    const response = await fetch(`http://${backendIPAddress}/feed/upload/`, {
       method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
+      headers: {},
       body: formData,
     });
 
     if (!response.ok) {
-      throw new Error("fail to fetch upload video");
+      throw new Error(
+        `Failed to fetch upload video. Status: ${response.status}`
+      );
     }
-    return await response.json();
+
+    // check เพื่อ parse
+    const contentType = response.headers.get("content-type");
+
+    if (contentType && contentType.includes("application/json")) {
+      return await response.json();
+    } else {
+      return await response.text();
+    }
   } catch (err) {
     console.error(err);
+    throw err;
   }
 }

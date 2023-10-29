@@ -15,11 +15,19 @@ export default function DescribeCard() {
                 <Typography sx={{ fontSize: 40 }} color="whitesmoke" gutterBottom>
                     Position : xxx
                 </Typography>
-                <Typography sx={{ fontSize: 30 ,textAlign: 'left'}} color="whitesmoke" gutterBottom>
+                {/* <Typography sx={{ fontSize: 30 ,textAlign: 'left'}} color="whitesmoke" gutterBottom>
                     About BokBok
                 </Typography><Typography sx={{ fontSize: 20 ,textAlign: 'left'}} color="whitesmoke" gutterBottom>
                     xxxxxxxx xxxxxxxx
-                </Typography>
+                </Typography> */}
+                <Box style={{ position: 'absolute', bottom: 250, left: 40, textAlign: 'left' }}>
+                    <Typography sx={{ fontSize: 30 }} color="whitesmoke" gutterBottom>
+                        About BokBok
+                    </Typography>
+                    <Typography sx={{ fontSize: 20 }} color="whitesmoke" gutterBottom>
+                        xxxxxxxx xxxxxxxx
+                    </Typography>
+                </Box>
 
             </CardContent>
            

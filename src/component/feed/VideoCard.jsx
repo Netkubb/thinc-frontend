@@ -8,6 +8,7 @@ import {
   Typography,
   Divider,
   TextField,
+  Button,
 } from "@mui/material";
 import CommentIcon from "@mui/icons-material/Comment";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -32,14 +33,17 @@ export default function VideoCard({ idx, arr }) {
   };
 
   const handleComment = async () => {
-    /*const jwtToken = Cookies.get("jwt");
+    const jwtToken = Cookies.get("jwt");
     const decodedToken = atob(jwtToken.split(".")[1]);
     const userData = JSON.parse(decodedToken);
     const username = userData.username;
-*/
+
     try {
-      const result = await addComment(arr[idx], username, commentContent);
-      console.log(result);
+      const result = await addComment(arr[idx].id, username, commentContent);
+      console.log(result.body);
+      console.log(comments);
+      setComments([...comments, result.body]);
+      setCommentContent("");
     } catch (error) {
       console.error(error);
     }

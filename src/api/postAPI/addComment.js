@@ -2,7 +2,7 @@ import { backendIPAddress } from "../../utils/constants";
 import Cookies from "js-cookie";
 
 export default async function addComment(pid, SendUsername, SendContent) {
-  const response = await fetch(`http://${backendIPAddress}/addComment`, {
+  const response = await fetch(`http://${backendIPAddress}/feed/addComment`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

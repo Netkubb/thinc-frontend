@@ -1,9 +1,11 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { React, useState } from "react";
 import uploadVideo from "../../api/postAPI/uploadVideo";
+import createPost from "../../api/postAPI/createPost";
 
 export default function UploadDetail() {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [caption, setCaption] = useState("");
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -14,7 +16,9 @@ export default function UploadDetail() {
   const uploadHandler = async () => {
     try {
       const result = await uploadVideo(selectedFile);
-      console.log(result);
+      const res = await createPost(result.url, caption)
+      console.log(res);
+      document.location.href = "/feed";
     } catch (err) {
       console.log(err);
     }
@@ -63,6 +67,8 @@ export default function UploadDetail() {
             variant="standard"
             multiline
             sx={{ width: "90%", mt: 1 }}
+            value={caption}
+            onChange={(e) => setCaption(e.target.value)}
           />
         </Box>
       </Box>

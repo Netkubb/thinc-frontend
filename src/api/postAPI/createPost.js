@@ -1,11 +1,12 @@
+import Cookies from "js-cookie";
 import { backendIPAddress } from "../../utils/constants";
 
 export default async function createPost(SendVideoURL, SendCaption) {
   const response = await fetch(`http://${backendIPAddress}/feed/`, {
     method: "POST",
-    credentials: "include",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${Cookies.get("jwt")}`,
     },
     body: JSON.stringify({
       videoURL: SendVideoURL,

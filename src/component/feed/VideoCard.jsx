@@ -5,7 +5,8 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault';
 import SendIcon from '@mui/icons-material/Send';
 
-export default function VideoCard() {
+export default function VideoCard(idx, arr) {
+    console.log({ idx } + { arr })
     const [showComment, setShowComment] = React.useState(false);
     const handleCommentClick = () => {
         setShowComment(!showComment)

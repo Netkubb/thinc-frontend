@@ -8,7 +8,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 
-export default function ButtonInFeed() {
+export default function ButtonInFeed(idx, controlidx, sizearr) {
     const uploadHandler = () => {
         window.location.href = "/upload";
     }
@@ -38,8 +38,8 @@ export default function ButtonInFeed() {
             <Box display={'flex'} flexDirection={'row'} justifyContent={'space-around'}>
                 <Button onClick={uploadHandler} variant="contained" sx={{ height: '60px', width: '150px', position: 'absolute', top: '20vh', left: "100px", backgroundColor: "#A04C84", color: "#FFFFFF" }}>Upload</Button>
                 <Button variant="contained" sx={{ height: '60px', width: '150px', position: 'absolute', bottom: '10vh', right: "150px", backgroundColor: "#FFFEAD", color: "#212146" }} onClick={handleClickOpen}>Donate</Button>
-                <Button variant="contained" sx={{ height: '60px', width: '60px', position: 'absolute', bottom: '45vh', right: "195px", borderRadius: '30px', backgroundColor: "#FFFFFF", color: "#212146" }}><ArrowDownwardIcon /></Button>
-                <Button variant="contained" sx={{ height: '60px', width: '60px', position: 'absolute', bottom: '55vh', right: "195px", borderRadius: '30px', backgroundColor: "#FFFFFF", color: "#212146" }}><ArrowUpwardIcon /></Button>
+                <Button variant="contained" sx={{ height: '60px', width: '60px', position: 'absolute', bottom: '45vh', right: "195px", borderRadius: '30px', backgroundColor: "#FFFFFF", color: "#212146" }} onClick={function () { controlidx((idx + 1) % sizearr) }}><ArrowDownwardIcon /></Button>
+                <Button variant="contained" sx={{ height: '60px', width: '60px', position: 'absolute', bottom: '55vh', right: "195px", borderRadius: '30px', backgroundColor: "#FFFFFF", color: "#212146" }} onClick={function () { controlidx(idx - 1 + sizearr) % sizearr }}><ArrowUpwardIcon /></Button>
             </Box >
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Enter Number of Bulbs</DialogTitle>

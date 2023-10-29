@@ -17,19 +17,19 @@ import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { TextField } from "@mui/material";
 import LightbulbIcon from "@mui/icons-material/Lightbulb";
 import Cookies from "js-cookie";
-import { setGlobalDarkMode } from "../utils/darkmode";
+import { ToggleGlobalDarkMode, getDarkMode } from "../utils/darkmode";
 
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const [darkMode, setDarkMode] = React.useState(true);
   const [settings, setSettings] = React.useState([
     "Login",
     "Register",
     "Logout",
   ]);
   const [pages, setPages] = React.useState(["Home", "Feed"]);
+  const [darkMode, setDarkMode] = React.useState(getDarkMode());
 
   React.useEffect(() => {
     if (Cookies.get("jwt")) {
@@ -39,11 +39,13 @@ function Navbar() {
       setSettings(["Login", "Register"]);
       setPages(["Home"]);
     }
+
   });
 
   const handleDarkMode = () => {
     setDarkMode(!darkMode);
-    setGlobalDarkMode(!darkMode);
+    ToggleGlobalDarkMode();
+    console.log(getDarkMode())
   };
 
   const handleOpenNavMenu = (event) => {

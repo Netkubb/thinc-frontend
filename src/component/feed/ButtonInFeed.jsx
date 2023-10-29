@@ -8,8 +8,8 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 
-export default function ButtonInFeed(idx, controlidx, sizearr) {
-
+// eslint-disable-next-line react/prop-types
+export default function ButtonInFeed({idx, controlidx, sizearr}) {
     const uploadHandler = () => {
         window.location.href = "/upload";
     }

@@ -118,6 +118,11 @@ export default function LoginForm() {
           onChange={(e) => setPassword(e.target.value)}
           helperText="Dont share password with anyone"
           sx={{ width: "70%" }}
+          onKeyDown={(e) => {
+            if(e.key === 'Enter') {
+              handleLogin();
+            }
+          }}
         />
       </Box>
 

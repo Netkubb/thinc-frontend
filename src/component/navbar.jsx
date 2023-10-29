@@ -18,7 +18,6 @@ import { TextField } from "@mui/material";
 import LightbulbIcon from "@mui/icons-material/Lightbulb";
 import Cookies from "js-cookie";
 
-const pages = ["Home", "Feed"];
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -29,12 +28,15 @@ function Navbar() {
     "Register",
     "Logout",
   ]);
+  const [pages, setPages] = React.useState(["Home", "Feed"]);
 
   React.useEffect(() => {
     if (Cookies.get("jwt")) {
       setSettings(["Logout"]);
+      setPages(["Home", "Feed"]);
     } else {
       setSettings(["Login", "Register"]);
+      setPages(["Home"]);
     }
   });
 

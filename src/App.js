@@ -7,6 +7,7 @@ import Upload from "./component/upload/upload";
 import Home from "./component/home/home";
 import Login from "./component/login/login";
 import Register from "./component/register/register";
+import Authenticator from "./component/Authenticator";
 
 function App() {
   return (
@@ -17,9 +18,11 @@ function App() {
           <Route path="/">
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
-            <Route path="/feed" element={<Feed />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+          </Route>
+          <Route path="/" element={<Authenticator />} >
+            <Route path="/feed" element={<Feed />} />
             <Route path="/upload" element={<Upload />} />
           </Route>
         </Routes>

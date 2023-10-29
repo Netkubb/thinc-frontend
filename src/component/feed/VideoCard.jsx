@@ -14,6 +14,8 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import DisabledByDefaultIcon from "@mui/icons-material/DisabledByDefault";
 import SendIcon from "@mui/icons-material/Send";
 import getPost from "../../api/postAPI/getPost";
+import Cookies from "js-cookie";
+import addComment from "../../api/postAPI/addComment";
 
 export default function VideoCard({ idx, arr }) {
   const [videoURL, setVideoURL] = React.useState("");
@@ -21,11 +23,26 @@ export default function VideoCard({ idx, arr }) {
   const [like, setLikes] = React.useState(0);
   const [comments, setComments] = React.useState([]);
   const [username, setUsername] = React.useState("");
+  const [commentContent, setCommentContent] = React.useState("");
 
-  console.log({ idx } + { arr });
+  //console.log({ idx } + { arr });
   const [showComment, setShowComment] = React.useState(false);
   const handleCommentClick = () => {
     setShowComment(!showComment);
+  };
+
+  const handleComment = async () => {
+    /*const jwtToken = Cookies.get("jwt");
+    const decodedToken = atob(jwtToken.split(".")[1]);
+    const userData = JSON.parse(decodedToken);
+    const username = userData.username;
+*/
+    try {
+      const result = await addComment(arr[idx], username, commentContent);
+      console.log(result);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   React.useEffect(() => {
@@ -183,7 +200,7 @@ export default function VideoCard({ idx, arr }) {
                     align="left"
                     sx={{ wordBreak: "break-word" }}
                   >
-                    {comment.comtent}
+                    {comment.content}
                   </Typography>
                 </>
               ))}
@@ -201,8 +218,11 @@ export default function VideoCard({ idx, arr }) {
                 variant="filled"
                 size="small"
                 sx={{ width: "80%" }}
+                value={commentContent}
+                onChange={(e) => setCommentContent(e.target.value)}
               />
-              <SendIcon sx={{ color: "black" }} />
+
+              <SendIcon sx={{ color: "black" }} onClick={handleComment} />
             </Box>
           </Box>
         </Box>

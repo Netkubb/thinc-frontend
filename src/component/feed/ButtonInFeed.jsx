@@ -7,6 +7,7 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
+import { getLight, setGlobalLight } from "../../utils/user";
 
 // eslint-disable-next-line react/prop-types
 export default function ButtonInFeed({ idx, controlidx, sizearr }) {
@@ -15,6 +16,7 @@ export default function ButtonInFeed({ idx, controlidx, sizearr }) {
   };
 
   const [open, setOpen] = React.useState(false);
+  const [light, setLight] = React.useState(0);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -31,6 +33,7 @@ export default function ButtonInFeed({ idx, controlidx, sizearr }) {
   };
 
   const handleCloseConfirm = () => {
+    setGlobalLight(getLight() - light);
     setConfirm(false);
   };
 
@@ -121,6 +124,7 @@ export default function ButtonInFeed({ idx, controlidx, sizearr }) {
             type="number"
             fullWidth
             variant="filled"
+            onChange={(e) => setLight(e.target.value)}
           />
         </DialogContent>
         <DialogActions>
@@ -138,7 +142,7 @@ export default function ButtonInFeed({ idx, controlidx, sizearr }) {
       <Dialog open={comfirm} onClose={handleCloseConfirm}>
         <DialogTitle>Comfirm Donation</DialogTitle>
         <DialogContent>
-          <Typography>Are you sure to donate {"xxx"} bulbs ?</Typography>
+          <Typography>Are you sure to donate {light} bulbs ?</Typography>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCloseConfirm}>Cancel</Button>

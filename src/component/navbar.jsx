@@ -18,7 +18,7 @@ import { TextField } from "@mui/material";
 import LightbulbIcon from "@mui/icons-material/Lightbulb";
 import Cookies from "js-cookie";
 import { ToggleGlobalDarkMode, getDarkMode } from "../utils/darkmode";
-
+import { getLight } from "../utils/user";
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -39,13 +39,12 @@ function Navbar() {
       setSettings(["Login", "Register"]);
       setPages(["Home"]);
     }
-
   });
 
   const handleDarkMode = () => {
     setDarkMode(!darkMode);
     ToggleGlobalDarkMode();
-    console.log(getDarkMode())
+    console.log(getDarkMode());
   };
 
   const handleOpenNavMenu = (event) => {
@@ -75,7 +74,10 @@ function Navbar() {
 
   return (
     <AppBar position="static">
-      <Container maxWidth="xxl" sx={{ backgroundColor: getDarkMode() ? "#DF8EC4" : 'grey' }}>
+      <Container
+        maxWidth="xxl"
+        sx={{ backgroundColor: getDarkMode() ? "#DF8EC4" : "grey" }}
+      >
         <Toolbar disableGutters>
           <Box
             sx={{
@@ -193,7 +195,7 @@ function Navbar() {
             <TextField
               id="standard-read-only-input"
               label="Bulbs"
-              value="100000000"
+              value={getLight()}
               InputProps={{
                 readOnly: true,
                 style: { color: "black" },

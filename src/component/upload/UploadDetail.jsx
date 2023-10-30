@@ -1,4 +1,4 @@
-import { Box, Button, TextField, Typography, Input } from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import { React, useState } from "react";
 import uploadVideo from "../../api/postAPI/uploadVideo";
 import createPost from "../../api/postAPI/createPost";
@@ -114,7 +114,6 @@ export default function UploadDetail() {
             width: "150px",
             backgroundColor: "#A04C84",
             color: "#FFFFFF",
-            marginTop: "50px",
             "&:hover": {
               backgroundColor: "#D55CFF",
             },

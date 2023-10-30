@@ -112,14 +112,15 @@ export default function VideoCard({ idx, arr, sizearr, controlx }) {
   const handleLikeClick = async () => {
     // Check if the user has already liked the post
     if (!liked) {
-      try {
-        //setLiked(true);
+      setLiked(true);
+      setLikes(like + 1);
+    }
+    try {
+      //setLiked(true);
 
-        setLikes(like + 1);
-        const result = await updatePost(arr[idx].id, caption, like);
-      } catch (error) {
-        console.error(error);
-      }
+      const result = await updatePost(arr[idx].id, caption, like);
+    } catch (error) {
+      console.error(error);
     }
   };
 

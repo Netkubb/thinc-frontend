@@ -19,14 +19,20 @@ import Cookies from "js-cookie";
 import addComment from "../../api/postAPI/addComment";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import SaveIcon from "@mui/icons-material/Save";
+//import getPost from "../../api/postAPI/getPost";
+import updatePost from "../../api/postAPI/updatePost";
+import deletePost from "../../api/postAPI/deletePost";
+import getPosts from "../../api/postAPI/getPosts";
 
-export default function VideoCard({ idx, arr }) {
+export default function VideoCard({ idx, arr, sizearr, controlx }) {
   const [videoURL, setVideoURL] = React.useState("");
   const [caption, setCaption] = React.useState("");
   const [like, setLikes] = React.useState(0);
   const [comments, setComments] = React.useState([]);
   const [username, setUsername] = React.useState("");
   const [commentContent, setCommentContent] = React.useState("");
+  const [idex, setIndex] = React.useState(idx);
 
   const jwtToken = Cookies.get("jwt");
   const decodedToken = atob(jwtToken.split(".")[1]);
@@ -37,6 +43,11 @@ export default function VideoCard({ idx, arr }) {
   const [showComment, setShowComment] = React.useState(false);
   const handleCommentClick = () => {
     setShowComment(!showComment);
+  };
+
+  const [showEdit, setShowEdit] = React.useState(false);
+  const handleEditClick = () => {
+    setShowEdit(!showEdit);
   };
 
   const handleComment = async () => {
@@ -66,6 +77,52 @@ export default function VideoCard({ idx, arr }) {
     fetchData();
   }, [arr, idx]);
 
+  const [editCaption, setEditCaption] = React.useState(false);
+  const [editedCaption, setEditedCaption] = React.useState("");
+
+  const handleEditCaption = () => {
+    setEditCaption(true);
+    setEditedCaption(caption);
+  };
+
+  const handleEditCaptionSave = async () => {
+    setEditCaption(false);
+    setCaption(editedCaption);
+    console.log(editedCaption);
+
+    // Save the edited caption to the server using your API function
+    //saveEditedCaptionToServer(editedCaption);
+
+    try {
+      const result = await updatePost(arr[idx].id, caption, like);
+      console.log(result);
+    } catch (error) {
+      console.error("Error updating post:", error);
+    }
+  };
+
+  const [oldID, setOldId] = React.useState("");
+
+  const handleDelete = async () => {
+    controlx((idx + 1) % sizearr);
+  };
+
+  const [liked, setLiked] = React.useState(false);
+
+  const handleLikeClick = async () => {
+    // Check if the user has already liked the post
+    if (!liked) {
+      try {
+        //setLiked(true);
+
+        setLikes(like + 1);
+        const result = await updatePost(arr[idx].id, caption, like);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  };
+
   return (
     <Card
       sx={{
@@ -84,6 +141,7 @@ export default function VideoCard({ idx, arr }) {
             display: "flex",
             justifyContent: "space-between",
             paddingX: "20px",
+            marginTop: "12px",
           }}
         >
           <Typography
@@ -92,6 +150,7 @@ export default function VideoCard({ idx, arr }) {
             color={"black"}
             align="left"
             fontWeight={"bold"}
+            fontSize={"1.5em"}
           >
             {username}
           </Typography>
@@ -100,9 +159,9 @@ export default function VideoCard({ idx, arr }) {
               display={"flex"}
               alignItems={"center"}
               flexDirection={"column"}
-              onClick={handleCommentClick}
+              onClick={handleDelete}
             >
-              <EditIcon sx={{ color: "black" }} />
+              <DeleteIcon sx={{ color: "black" }} />
             </Box>
           ) : (
             ""
@@ -112,33 +171,50 @@ export default function VideoCard({ idx, arr }) {
         <br></br>
         <Box
           sx={{
-            height: "100px",
             display: "flex",
             justifyContent: "space-between",
             paddingX: "20px",
+            marginTop: "12px",
+            marginBottom: "12px",
           }}
         >
-          <Typography
-            variant="caption"
-            component="div"
-            color={"black"}
-            align="left"
-            sx={{ wordBreak: "break-word" }}
-          >
-            {caption}
-          </Typography>
-          {tokenUsername === username ? (
-            <Box
-              display={"flex"}
-              alignItems={"center"}
-              flexDirection={"column"}
-              onClick={handleCommentClick}
-            >
-              <DeleteIcon sx={{ color: "black" }} />
-            </Box>
+          {editCaption ? (
+            <TextField
+              id="caption-edit"
+              variant="filled"
+              size="small"
+              sx={{ width: "80%" }}
+              value={editedCaption}
+              onChange={(e) => setEditedCaption(e.target.value)}
+            />
           ) : (
-            ""
+            <Typography
+              variant="caption"
+              component="div"
+              color={"black"}
+              align="left"
+              sx={{ wordBreak: "break-word" }}
+            >
+              {caption}
+            </Typography>
           )}
+          <Box display={"flex"} justifyContent="space-between">
+            {tokenUsername === username && (
+              <>
+                {editCaption ? (
+                  <SaveIcon
+                    sx={{ color: "black" }}
+                    onClick={handleEditCaptionSave}
+                  />
+                ) : (
+                  <EditIcon
+                    sx={{ color: "black" }}
+                    onClick={handleEditCaption}
+                  />
+                )}
+              </>
+            )}
+          </Box>
         </Box>
         <Box
           sx={{
@@ -191,6 +267,7 @@ export default function VideoCard({ idx, arr }) {
               display={"flex"}
               alignItems={"center"}
               flexDirection={"column"}
+              onClick={handleLikeClick}
             >
               <FavoriteIcon sx={{ color: "black" }} />
               <Typography
@@ -205,6 +282,7 @@ export default function VideoCard({ idx, arr }) {
           </Box>
         </Box>
       </CardContent>
+
       {showComment ? (
         <Box>
           <Box

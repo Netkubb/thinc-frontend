@@ -1,11 +1,12 @@
 import { backendIPAddress } from "../../utils/constants";
+import Cookies from "js-cookie";
 
 export default async function updatePost(pid, SendUserCaption, SendUserLike) {
   const response = await fetch(`http://${backendIPAddress}/feed/`, {
     method: "PUT",
-    credentials: "include",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${Cookies.get("jwt")}` || "",
     },
     body: JSON.stringify({
       id: pid,

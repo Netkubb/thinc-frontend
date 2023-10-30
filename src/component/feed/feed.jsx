@@ -24,7 +24,12 @@ function Feed() {
         controlidx={(x) => setIndex(x)}
         sizearr={posts.length}
       />
-      <VideoCard idx={index} arr={posts} />
+      <VideoCard
+        idx={index}
+        arr={posts}
+        sizearr={posts.length}
+        controlx={(x) => setIndex(x)}
+      />
     </Box>
   );
 }

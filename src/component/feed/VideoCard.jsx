@@ -17,6 +17,8 @@ import SendIcon from "@mui/icons-material/Send";
 import getPost from "../../api/postAPI/getPost";
 import Cookies from "js-cookie";
 import addComment from "../../api/postAPI/addComment";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 export default function VideoCard({ idx, arr }) {
   const [videoURL, setVideoURL] = React.useState("");
@@ -26,6 +28,11 @@ export default function VideoCard({ idx, arr }) {
   const [username, setUsername] = React.useState("");
   const [commentContent, setCommentContent] = React.useState("");
 
+  const jwtToken = Cookies.get("jwt");
+  const decodedToken = atob(jwtToken.split(".")[1]);
+  const userData = JSON.parse(decodedToken);
+  const tokenUsername = userData.username;
+
   //console.log({ idx } + { arr });
   const [showComment, setShowComment] = React.useState(false);
   const handleCommentClick = () => {
@@ -33,11 +40,6 @@ export default function VideoCard({ idx, arr }) {
   };
 
   const handleComment = async () => {
-    const jwtToken = Cookies.get("jwt");
-    const decodedToken = atob(jwtToken.split(".")[1]);
-    const userData = JSON.parse(decodedToken);
-    const username = userData.username;
-
     try {
       const result = await addComment(arr[idx].id, username, commentContent);
       console.log(result);
@@ -77,17 +79,45 @@ export default function VideoCard({ idx, arr }) {
       }}
     >
       <CardContent>
-        <Typography
-          variant="inherit"
-          component="div"
-          color={"black"}
-          align="left"
-          fontWeight={"bold"}
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            paddingX: "20px",
+          }}
         >
-          {username}
-        </Typography>
+          <Typography
+            variant="inherit"
+            component="div"
+            color={"black"}
+            align="left"
+            fontWeight={"bold"}
+          >
+            {username}
+          </Typography>
+          {tokenUsername === username ? (
+            <Box
+              display={"flex"}
+              alignItems={"center"}
+              flexDirection={"column"}
+              onClick={handleCommentClick}
+            >
+              <EditIcon sx={{ color: "black" }} />
+            </Box>
+          ) : (
+            ""
+          )}
+        </Box>
+
         <br></br>
-        <Box sx={{ height: "100px" }}>
+        <Box
+          sx={{
+            height: "100px",
+            display: "flex",
+            justifyContent: "space-between",
+            paddingX: "20px",
+          }}
+        >
           <Typography
             variant="caption"
             component="div"
@@ -97,6 +127,18 @@ export default function VideoCard({ idx, arr }) {
           >
             {caption}
           </Typography>
+          {tokenUsername === username ? (
+            <Box
+              display={"flex"}
+              alignItems={"center"}
+              flexDirection={"column"}
+              onClick={handleCommentClick}
+            >
+              <DeleteIcon sx={{ color: "black" }} />
+            </Box>
+          ) : (
+            ""
+          )}
         </Box>
         <Box
           sx={{
@@ -133,6 +175,7 @@ export default function VideoCard({ idx, arr }) {
               alignItems={"center"}
               flexDirection={"column"}
               onClick={handleCommentClick}
+              marginBottom={"40px"}
             >
               <CommentIcon sx={{ color: "black" }} />
               <Typography

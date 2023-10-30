@@ -1,7 +1,8 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, Button, TextField, Typography, Input } from "@mui/material";
 import { React, useState } from "react";
 import uploadVideo from "../../api/postAPI/uploadVideo";
 import createPost from "../../api/postAPI/createPost";
+import UploadIcon from "@mui/icons-material/Upload";
 
 export default function UploadDetail() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -25,19 +26,26 @@ export default function UploadDetail() {
   };
 
   return (
-    <Box>
+    <Box sx={{ marginBottom: "100px" }}>
       <Box
         sx={{
-          height: "50vh",
-          width: "50vw",
+          height: "70vh",
+          width: "65vw",
           backgroundColor: "white",
           marginTop: "100px",
           borderRadius: "16px",
           overflow: "hidden",
-          overflowY: "scroll",
+          paddingY: "30px",
         }}
       >
-        <Box sx={{ py: 2, lineHeight: "30px" }}>
+        <Box
+          sx={{
+            py: 2,
+            lineHeight: "30px",
+            height: "30%",
+            marginBottom: "50px",
+          }}
+        >
           <Typography
             variant="h9"
             component="div"
@@ -45,12 +53,40 @@ export default function UploadDetail() {
             align="left"
             marginLeft={"5%"}
             fontWeight={"bold"}
+            fontSize={"2em"}
           >
-            Choose Video:{" "}
+            Videdo upload:{" "}
           </Typography>
-          <input type="file" name="file" onChange={handleFileChange} />
+          <Button
+            component="label"
+            variant="contained"
+            sx={{
+              backgroundColor: "#DFDAE1",
+              "&:hover": {
+                backgroundColor: "#D55CFF",
+              },
+              marginTop: "50px",
+              height: "150px",
+              width: "150px",
+              borderRadius: "50%",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              marginX: "auto",
+            }}
+          >
+            <UploadIcon
+              sx={{
+                height: "80%",
+                width: "50%",
+                color: "black",
+              }}
+            />
+            <input type="file" name="file" hidden onChange={handleFileChange} />
+          </Button>
         </Box>
-        <Box sx={{ width: "100%", mb: 2 }}>
+        <Box sx={{ width: "100%", mb: 2, marginTop: "100px" }}>
           <Typography
             variant="h9"
             component="div"
@@ -59,7 +95,7 @@ export default function UploadDetail() {
             marginLeft={"5%"}
             fontWeight={"bold"}
           >
-            Enter Video Caption
+            Video Caption
           </Typography>
           <TextField
             id="standard-basic"
@@ -71,20 +107,25 @@ export default function UploadDetail() {
             onChange={(e) => setCaption(e.target.value)}
           />
         </Box>
+        <Button
+          variant="contained"
+          sx={{
+            height: "40px",
+            width: "150px",
+            backgroundColor: "#A04C84",
+            color: "#FFFFFF",
+            marginTop: "50px",
+            "&:hover": {
+              backgroundColor: "#D55CFF",
+            },
+            borderRadius: "10px",
+            marginTop: "80px",
+          }}
+          onClick={uploadHandler}
+        >
+          Upload
+        </Button>
       </Box>
-      <Button
-        variant="contained"
-        sx={{
-          height: "60px",
-          width: "150px",
-          backgroundColor: "#A04C84",
-          color: "#FFFFFF",
-          marginTop: "50px",
-        }}
-        onClick={uploadHandler}
-      >
-        Upload
-      </Button>
     </Box>
   );
 }

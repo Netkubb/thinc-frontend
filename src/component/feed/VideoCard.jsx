@@ -40,9 +40,9 @@ export default function VideoCard({ idx, arr }) {
 
     try {
       const result = await addComment(arr[idx].id, username, commentContent);
-      console.log(result.body);
+      console.log(result);
       console.log(comments);
-      setComments([...comments, result.body]);
+      setComments([...comments, result]);
       setCommentContent("");
     } catch (error) {
       console.error(error);

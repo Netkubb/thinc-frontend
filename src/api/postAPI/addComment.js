@@ -17,5 +17,5 @@ export default async function addComment(pid, SendUsername, SendContent) {
 
   if (!response.ok) throw Error("fail to fetch add Comment");
 
-  return response;
+  return await response.json();
 }

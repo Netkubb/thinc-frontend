@@ -103,7 +103,7 @@ export default function ButtonInFeed({ idx, controlidx, sizearr }) {
             color: "#212146",
           }}
           onClick={() => {
-            controlidx(idx - 1 + sizearr) % sizearr;
+            controlidx((idx - 1 + sizearr) % sizearr);
             console.log(idx);
           }}
         >

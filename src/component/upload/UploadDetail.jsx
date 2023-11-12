@@ -55,7 +55,7 @@ export default function UploadDetail() {
             fontWeight={"bold"}
             fontSize={"2em"}
           >
-            Videdo upload:{" "}
+            BOK BOK upload:{" "}
           </Typography>
           <Button
             component="label"
